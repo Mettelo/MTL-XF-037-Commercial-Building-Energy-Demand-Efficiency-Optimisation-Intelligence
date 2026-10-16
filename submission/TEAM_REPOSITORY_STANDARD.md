@@ -24,3 +24,13 @@ Assign named people to all seven [brief roles](../project/PROJECT_BRIEF.md). Eve
 Verify Wh-to-kWh aggregation and write three monitored scheduling cards with baseline, comfort observation plan and commercial transfer constraints.
 
 Maintain D1–D12/AC1–AC12/DT1–DT10 evidence index with owner, distinct reviewer, state and final-commit path. Connect numeric claims to frozen source and code/configuration. Record all manual adjustments, excluded cases and limitations; preserve an insufficient-evidence case.
+
+## Required business-output artefacts
+
+- **D5 Interval energy and coverage ledger:** data/curated/interval-energy-and-coverage-ledger.csv and docs/05-kpi-catalogue/interval-energy-and-coverage-ledger.md.
+- **D6 Next-interval demand forecast comparison:** docs/06-analysis/next-interval-demand-forecast-comparison.md plus machine-readable evaluation_results.csv.
+- **D7 Three scheduling hypotheses and scenario model:** docs/07-decision-framework/three-scheduling-hypotheses-and-scenario-model.csv plus policy.md.
+- **D8 Energy service pilot dashboard:** dashboard/README.md, runnable dashboard/prototype and static review export.
+- **D11 Commercial-site pilot specification:** deliverables/commercial-site-pilot-specification.pdf plus editable slides and supporting cards/runbook.
+
+Index these under SC1–SC5 with author, distinct reviewer, executed result and final commit. Treat these paths as the default delivery contract; an equivalent tool-specific format requires an explicit documented mapping.

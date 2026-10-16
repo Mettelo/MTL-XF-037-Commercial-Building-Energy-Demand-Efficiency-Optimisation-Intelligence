@@ -36,37 +36,57 @@ Profile types, nulls, duplicates, sentinels, labels, units and source support. A
 
 **Pass evidence:** Every treatment has affected count, reason, owner and reviewer; no silent row loss or coercion.
 
-## D5 — KPI catalogue and lineage
+## D5 — Interval energy and coverage ledger
 
-**Due:** Week 4 · **Owner:** Energy and Facilities Analyst · **Team location:** docs/05-kpi-catalogue/
+**Due:** Week 4 · **Owner:** Energy and Facilities Analyst · **Business reviewer:** Commercial Energy Services Director · **Independent reviewer:** Energy Forecast Assurance Analyst
 
-Implement K1–K7 below with actual source fields, code, valid population, denominator, units, grain, exclusions, owner and worked examples.
+**Required artefact:** data/curated/interval-energy-and-coverage-ledger.csv and docs/05-kpi-catalogue/interval-energy-and-coverage-ledger.md.
 
-**Pass evidence:** All seven reviewed; K1–K5 reconcile independently and in BI on full cohort and one filtered slice.
+Unique timestamps, Appliances/lights Wh, appliance kWh, observed/expected ten-minute coverage and gap/duplicate flags; actual date bounds.
 
-## D6 — Analysis and evaluation
+**Mandatory pass condition (SC1):** Six 100 Wh intervals sum to 0.6 kWh; no extra ×1/6 conversion; twenty-minute gaps not treated as adjacent targets; timezone left source-local if unknown.
 
-**Due:** Week 6 · **Owner:** Data Scientist / Decision Modelling Analyst · **Team location:** docs/06-analysis/
+**Review evidence:** retain the actual output, source-to-field/code/configuration lineage, expected/actual verification, reviewer and date. A heading, screenshot or unsupported claim alone cannot satisfy this deliverable.
 
-Chronological first 60% train, next 20% validation, last 20% test by timestamp. Core forecast is next-interval Appliances using only information available through the preceding interval; lag all contemporaneous sensors/weather as needed. Drop boundary/gap targets with row accounting. Compare previous-interval and train-only hour-of-week median baselines.
 
-**Pass evidence:** Baseline and alternative results, population/class counts, uncertainty, negative findings and feature/timing audit retained; no test-driven tuning.
+## D6 — Next-interval demand forecast comparison
 
-## D7 — Decision policy and action register
+**Due:** Week 6 · **Owner:** Data Scientist / Decision Modelling Analyst · **Business reviewer:** Commercial Energy Services Director · **Independent reviewer:** Energy Forecast Assurance Analyst
 
-**Due:** Week 6 · **Owner:** Energy and Facilities Analyst · **Team location:** docs/07-decision-framework/
+**Required artefact:** docs/06-analysis/next-interval-demand-forecast-comparison.md plus machine-readable evaluation_results.csv.
 
-Rank hour-of-week windows by observed appliance kWh and compare with a lagged-demand forecast. Model 5%, 10%, 15% reductions within nominated windows at assumed £0.20/£0.30/£0.40 per kWh, never as verified savings. Keep temperature/humidity diagnostic plots; propose comfort monitoring rather than fabricated compliance.
+Previous-interval and train-hour-of-week baselines versus candidate forecast, chronological holdout MAE/RMSE and peak-window errors.
 
-**Pass evidence:** Both policies and sensitivity outputs supplied; every action has evidence, eligibility, owner, next review and uncertainty. Include a defer case.
+**Mandatory pass condition (SC2):** Only available past inputs used; rv1/rv2 excluded; identical eligible test targets across methods; publish absolute error and relative change against both baselines.
 
-## D8 — Dashboard / decision prototype
+**Review evidence:** retain the actual output, source-to-field/code/configuration lineage, expected/actual verification, reviewer and date. A heading, screenshot or unsupported claim alone cannot satisfy this deliverable.
 
-**Due:** Week 7 · **Owner:** BI / Decision Product Developer · **Team location:** dashboard/
 
-Four linked views: K1–K7 executive overview, source-supported diagnostics, policy/action comparison and quality/limitations for Commercial Energy Services Director.
+## D7 — Three scheduling hypotheses and scenario model
 
-**Pass evidence:** Five metric/filter checks pass; frozen scope and limitations survive export; static copy/user guide require no paid access.
+**Due:** Week 6 · **Owner:** Energy and Facilities Analyst · **Business reviewer:** Commercial Energy Services Director · **Independent reviewer:** Energy Forecast Assurance Analyst
+
+**Required artefact:** docs/07-decision-framework/three-scheduling-hypotheses-and-scenario-model.csv plus policy.md.
+
+Three hour-of-week windows with observed energy, forecast evidence, assumed reduction and nine tariff/reduction outcomes; no operational control commands.
+
+**Mandatory pass condition (SC3):** 10 kWh×10%×£0.30=£0.30 assumed avoided cost; all windows cite coverage and comfort-data gaps; no achieved savings claim.
+
+**Review evidence:** retain the actual output, source-to-field/code/configuration lineage, expected/actual verification, reviewer and date. A heading, screenshot or unsupported claim alone cannot satisfy this deliverable.
+
+
+## D8 — Energy service pilot dashboard
+
+**Due:** Week 7 · **Owner:** BI / Decision Product Developer · **Business reviewer:** Commercial Energy Services Director · **Independent reviewer:** Energy Forecast Assurance Analyst
+
+**Required artefact:** dashboard/README.md, runnable dashboard/prototype and static review export.
+
+Daily/hourly energy, forecast performance, scheduling scenarios and proxy/coverage limitations.
+
+**Mandatory pass condition (SC4):** Reviewer distinguishes Wh/kWh/kW, changes tariff without changing measured energy, and identifies a gap-limited window excluded from recommendation.
+
+**Review evidence:** retain the actual output, source-to-field/code/configuration lineage, expected/actual verification, reviewer and date. A heading, screenshot or unsupported claim alone cannot satisfy this deliverable.
+
 
 ## D9 — Independent assurance and UAT
 
@@ -84,13 +104,18 @@ One documented run entry point, dependency versions, manifest, output checksums/
 
 **Pass evidence:** Second member reproduces all seven KPIs and policy queue from approved bytes; environment, elapsed time and discrepancies recorded.
 
-## D11 — Executive recommendation
+## D11 — Commercial-site pilot specification
 
-**Due:** Week 8 · **Owner:** Delivery Lead + domain specialist · **Team location:** deliverables/
+**Due:** Week 8 · **Owner:** Business Analyst / Delivery Lead with domain specialist · **Business reviewer:** Commercial Energy Services Director · **Independent reviewer:** Energy Forecast Assurance Analyst
 
-8–12 slides and a 5–10-minute demo answering Select three monitored scheduling hypotheses and a commercial-site validation plan. Include five evidence-linked findings, three next actions, comparison and a defer case.
+**Required artefact:** deliverables/commercial-site-pilot-specification.pdf plus editable slides and supporting cards/runbook.
 
-**Pass evidence:** Every numeric claim links tested evidence; costs/benefits and operational targets are labelled assumptions unless measured.
+Metering scope, occupancy and tariff data, comfort monitoring, comparison design, pilot window, owner and stop/review rule for all three hypotheses.
+
+**Mandatory pass condition (SC5):** Explicitly declares single residential proxy; defines commercial transfer evidence, measured cost/comfort outcomes and consent/access needs before any site trial.
+
+**Review evidence:** retain the actual output, source-to-field/code/configuration lineage, expected/actual verification, reviewer and date. A heading, screenshot or unsupported claim alone cannot satisfy this deliverable.
+
 
 ## D12 — Contribution and final submission
 

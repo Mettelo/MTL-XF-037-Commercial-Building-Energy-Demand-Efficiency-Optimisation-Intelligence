@@ -10,14 +10,79 @@ Acceptance requires executed evidence, not headings. Energy Forecast Assurance A
 | AC2 | D2 | Every required file/field is verified and approved; unsupported requirements explicitly block G1. |
 | AC3 | D3 | Input=retained+excluded+quarantined exactly; no unexplained join multiplication; clean-run instructions exist. |
 | AC4 | D4 | Every treatment has affected count, reason, owner and reviewer; no silent row loss or coercion. |
-| AC5 | D5 | All seven reviewed; K1–K5 reconcile independently and in BI on full cohort and one filtered slice. |
-| AC6 | D6 | Baseline and alternative results, population/class counts, uncertainty, negative findings and feature/timing audit retained; no test-driven tuning. |
-| AC7 | D7 | Both policies and sensitivity outputs supplied; every action has evidence, eligibility, owner, next review and uncertainty. Include a defer case. |
-| AC8 | D8 | Five metric/filter checks pass; frozen scope and limitations survive export; static copy/user guide require no paid access. |
+| AC5 | D5 / SC1 | Six 100 Wh intervals sum to 0.6 kWh; no extra ×1/6 conversion; twenty-minute gaps not treated as adjacent targets; timezone left source-local if unknown. |
+| AC6 | D6 / SC2 | Only available past inputs used; rv1/rv2 excluded; identical eligible test targets across methods; publish absolute error and relative change against both baselines. |
+| AC7 | D7 / SC3 | 10 kWh×10%×£0.30=£0.30 assumed avoided cost; all windows cite coverage and comfort-data gaps; no achieved savings claim. |
+| AC8 | D8 / SC4 | Reviewer distinguishes Wh/kWh/kW, changes tariff without changing measured energy, and identifies a gap-limited window excluded from recommendation. |
 | AC9 | D9 | All ten tests and three tasks pass; zero unresolved critical/high defects. |
 | AC10 | D10 | Second member reproduces all seven KPIs and policy queue from approved bytes; environment, elapsed time and discrepancies recorded. |
-| AC11 | D11 | Every numeric claim links tested evidence; costs/benefits and operational targets are labelled assumptions unless measured. |
+| AC11 | D11 / SC5 | Explicitly declares single residential proxy; defines commercial transfer evidence, measured cost/comfort outcomes and consent/access needs before any site trial. |
 | AC12 | D12 | All D/AC/DT evidence links resolve at final commit/tag; individual contribution is demonstrated beyond bulk upload or commit count. |
+
+## SC1–SC5 — Business output success contracts
+
+These requirements supplement AC1–AC12 and are mandatory. Record approval at G1, then execute against final outputs. All five require PASS with traceable evidence, or a formally approved scope revision; an unmet model-performance target must be reported as unmet and reflected in the recommendation.
+
+### SC1 / D5 — Interval energy and coverage ledger
+
+**Accountable delivery role:** Energy and Facilities Analyst. **Business reviewer:** Commercial Energy Services Director. **Independent assurance:** Energy Forecast Assurance Analyst.
+
+**Required artefact:** data/curated/interval-energy-and-coverage-ledger.csv and docs/05-kpi-catalogue/interval-energy-and-coverage-ledger.md.
+
+**Content:** Unique timestamps, Appliances/lights Wh, appliance kWh, observed/expected ten-minute coverage and gap/duplicate flags; actual date bounds.
+
+**Pass condition:** Six 100 Wh intervals sum to 0.6 kWh; no extra ×1/6 conversion; twenty-minute gaps not treated as adjacent targets; timezone left source-local if unknown.
+
+**Evidence to retain:** actual output at final commit, source/configuration lineage, executed expected-versus-actual checks, reviewer identity/date and PASS/FAIL/BLOCKED. Do not mark complete from document presence alone.
+
+### SC2 / D6 — Next-interval demand forecast comparison
+
+**Accountable delivery role:** Data Scientist / Decision Modelling Analyst. **Business reviewer:** Commercial Energy Services Director. **Independent assurance:** Energy Forecast Assurance Analyst.
+
+**Required artefact:** docs/06-analysis/next-interval-demand-forecast-comparison.md plus machine-readable evaluation_results.csv.
+
+**Content:** Previous-interval and train-hour-of-week baselines versus candidate forecast, chronological holdout MAE/RMSE and peak-window errors.
+
+**Pass condition:** Only available past inputs used; rv1/rv2 excluded; identical eligible test targets across methods; publish absolute error and relative change against both baselines.
+
+**Evidence to retain:** actual output at final commit, source/configuration lineage, executed expected-versus-actual checks, reviewer identity/date and PASS/FAIL/BLOCKED. Do not mark complete from document presence alone.
+
+### SC3 / D7 — Three scheduling hypotheses and scenario model
+
+**Accountable delivery role:** Energy and Facilities Analyst. **Business reviewer:** Commercial Energy Services Director. **Independent assurance:** Energy Forecast Assurance Analyst.
+
+**Required artefact:** docs/07-decision-framework/three-scheduling-hypotheses-and-scenario-model.csv plus policy.md.
+
+**Content:** Three hour-of-week windows with observed energy, forecast evidence, assumed reduction and nine tariff/reduction outcomes; no operational control commands.
+
+**Pass condition:** 10 kWh×10%×£0.30=£0.30 assumed avoided cost; all windows cite coverage and comfort-data gaps; no achieved savings claim.
+
+**Evidence to retain:** actual output at final commit, source/configuration lineage, executed expected-versus-actual checks, reviewer identity/date and PASS/FAIL/BLOCKED. Do not mark complete from document presence alone.
+
+### SC4 / D8 — Energy service pilot dashboard
+
+**Accountable delivery role:** BI / Decision Product Developer. **Business reviewer:** Commercial Energy Services Director. **Independent assurance:** Energy Forecast Assurance Analyst.
+
+**Required artefact:** dashboard/README.md, runnable dashboard/prototype and static review export.
+
+**Content:** Daily/hourly energy, forecast performance, scheduling scenarios and proxy/coverage limitations.
+
+**Pass condition:** Reviewer distinguishes Wh/kWh/kW, changes tariff without changing measured energy, and identifies a gap-limited window excluded from recommendation.
+
+**Evidence to retain:** actual output at final commit, source/configuration lineage, executed expected-versus-actual checks, reviewer identity/date and PASS/FAIL/BLOCKED. Do not mark complete from document presence alone.
+
+### SC5 / D11 — Commercial-site pilot specification
+
+**Accountable delivery role:** Business Analyst / Delivery Lead with domain specialist. **Business reviewer:** Commercial Energy Services Director. **Independent assurance:** Energy Forecast Assurance Analyst.
+
+**Required artefact:** deliverables/commercial-site-pilot-specification.pdf plus editable slides and supporting cards/runbook.
+
+**Content:** Metering scope, occupancy and tariff data, comfort monitoring, comparison design, pilot window, owner and stop/review rule for all three hypotheses.
+
+**Pass condition:** Explicitly declares single residential proxy; defines commercial transfer evidence, measured cost/comfort outcomes and consent/access needs before any site trial.
+
+**Evidence to retain:** actual output at final commit, source/configuration lineage, executed expected-versus-actual checks, reviewer identity/date and PASS/FAIL/BLOCKED. Do not mark complete from document presence alone.
+
 
 ## DT1–DT10
 
@@ -36,13 +101,13 @@ Acceptance requires executed evidence, not headings. Energy Forecast Assurance A
 
 Use small synthetic fixtures for edge cases and frozen-source checks where relevant. Clearly distinguish fixture results from measured source outputs. Retain expected/actual evidence in docs/08-assurance-uat/; automate deterministic calculations where practical and document UI/interpretation reviews.
 
-## Three UAT tasks
+## Three project-specific UAT tasks
 
-1. Commercial Energy Services Director finds K1, explains its denominator, snapshot and limitation.
-2. Energy and Facilities Analyst compares one baseline/alternative case and records accept/defer/override with rationale.
-3. An operational user traces an action to source evidence and finds the manual review/escalation owner.
+1. **Business review:** The Commercial Energy Services Director reviews interval-energy quality, next-interval forecast errors and three scheduling hypotheses, then commissions a monitored commercial-site pilot with occupancy, tariff and comfort data. The participant must explain the observed baseline, population and decision limitation without assistance from the author; record actual completion and any defect.
+2. **Policy challenge:** use the D7 artefact to compare a baseline and alternative case, then record accept/defer/override with evidence and accountable owner. The domain reviewer must independently reproduce the case outcome.
+3. **Operational walkthrough:** Reviewer distinguishes Wh/kWh/kW, changes tariff without changing measured energy, and identifies a gap-limited window excluded from recommendation. Retain the task recording/screenshots, expected/actual values and reviewer outcome.
 
-Record participant role, expected/observed result, defect and retest. All three must pass; static exports may support review where interactive access is unavailable.
+All three must pass after defect retest. Static exports may support review if interactive access is unavailable. The independent reviewer also checks every SC output against its declared artefact and source/configuration lineage.
 
 ## Release
 

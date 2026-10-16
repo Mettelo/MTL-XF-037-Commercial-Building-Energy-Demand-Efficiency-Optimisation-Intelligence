@@ -6,9 +6,33 @@ This is a simulated confidential-client engagement using public/open data. Stake
 
 ## Problem and commission
 
-A commercial energy-services provider needs to demonstrate a reliable demand-analysis method before seeking a customer-site pilot. The available data come from a single low-energy house, so commercial savings, occupancy effects and contractual comfort compliance require further evidence.
+The energy-services provider must decide whether its demand-analysis method is credible enough to take into a commercial customer pilot. High-consumption windows may identify scheduling hypotheses, but confusing interval energy with power or leaking same-interval measurements into a forecast would exaggerate usefulness. Because the source is one house, the commercial decision is whether and how to validate the method at a customer site, not whether a commercial saving has already been established.
 
 > Select three monitored scheduling hypotheses and a commercial-site validation plan.
+
+## Practical use case and business outputs
+
+The Commercial Energy Services Director reviews interval-energy quality, next-interval forecast errors and three scheduling hypotheses, then commissions a monitored commercial-site pilot with occupancy, tariff and comfort data.
+
+| Deliverable | What the team must hand over | Required contents |
+| --- | --- | --- |
+| D5 | Interval energy and coverage ledger | Unique timestamps, Appliances/lights Wh, appliance kWh, observed/expected ten-minute coverage and gap/duplicate flags; actual date bounds. |
+| D6 | Next-interval demand forecast comparison | Previous-interval and train-hour-of-week baselines versus candidate forecast, chronological holdout MAE/RMSE and peak-window errors. |
+| D7 | Three scheduling hypotheses and scenario model | Three hour-of-week windows with observed energy, forecast evidence, assumed reduction and nine tariff/reduction outcomes; no operational control commands. |
+| D8 | Energy service pilot dashboard | Daily/hourly energy, forecast performance, scheduling scenarios and proxy/coverage limitations. |
+| D11 | Commercial-site pilot specification | Metering scope, occupancy and tariff data, comfort monitoring, comparison design, pilot window, owner and stop/review rule for all three hypotheses. |
+
+## Required success contract
+
+| Success ID | Required deliverable | Specific pass condition |
+| --- | --- | --- |
+| SC1 | D5 — Interval energy and coverage ledger | Six 100 Wh intervals sum to 0.6 kWh; no extra ×1/6 conversion; twenty-minute gaps not treated as adjacent targets; timezone left source-local if unknown. |
+| SC2 | D6 — Next-interval demand forecast comparison | Only available past inputs used; rv1/rv2 excluded; identical eligible test targets across methods; publish absolute error and relative change against both baselines. |
+| SC3 | D7 — Three scheduling hypotheses and scenario model | 10 kWh×10%×£0.30=£0.30 assumed avoided cost; all windows cite coverage and comfort-data gaps; no achieved savings claim. |
+| SC4 | D8 — Energy service pilot dashboard | Reviewer distinguishes Wh/kWh/kW, changes tariff without changing measured energy, and identifies a gap-limited window excluded from recommendation. |
+| SC5 | D11 — Commercial-site pilot specification | Explicitly declares single residential proxy; defines commercial transfer evidence, measured cost/comfort outcomes and consent/access needs before any site trial. |
+
+[Detailed acceptance](ACCEPTANCE_CRITERIA.md) defines executed evidence; [deliverables](DELIVERABLES.md) defines exact artefacts and ownership. G1 records simulated sponsor approval, not invented real-client agreement.
 
 ## Core scope
 
