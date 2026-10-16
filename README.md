@@ -1,6 +1,6 @@
 # MTL-XF-037 — Commercial Building Energy Demand Efficiency Optimisation Intelligence
 
-**Track:** Cross-Functional · **Sector:** Private-sector commercial operations · **Team:** 6–8 · **Duration:** 8 weeks
+**Track:** Cross-Functional · **Sector:** Private-sector commercial operations · **Team:** 3–5 · **Duration:** 8 weeks
 
 ## The business problem
 
